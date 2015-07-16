@@ -17,6 +17,7 @@ gem 'devise'
 gem 'faker'
 gem 'pundit'
 gem 'figaro', '1.0'
+gem 'bourbon'
 
 
 # Use jquery as the JavaScript library
