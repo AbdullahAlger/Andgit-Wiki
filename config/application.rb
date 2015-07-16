@@ -35,6 +35,7 @@ module Blocipedia
     config.generators do |generate|
       # Disable generation of helpers
       generate.helper false
+      generate.coffee false
     end
 
   end
