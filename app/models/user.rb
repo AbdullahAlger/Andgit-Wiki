@@ -6,5 +6,16 @@ class User < ActiveRecord::Base
 
   has_many :wiki, dependent: :destroy
 
+  def admin?
+    role == 'admin'
+  end
+
+  def standard
+    role == 'standard'
+  end
+
+  def premium
+    role == 'premium'
+  end
 
 end

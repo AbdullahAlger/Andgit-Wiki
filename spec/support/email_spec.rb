@@ -22,8 +22,6 @@ RSpec.configure do |config|
 
 end
 
-Rails.application.routes.default_url_options[:host] = 'localhost:3000'
-
 # 3. Start making use of email_spec helpers and matchers. See specs in this project
 #    for examples.
 

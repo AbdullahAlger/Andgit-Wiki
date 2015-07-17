@@ -13,7 +13,8 @@ users = User.all
           title: Faker::Lorem.sentence,
           body: Faker::Lorem.paragraph,
           private: false,
-          user: users.sample
+          user: users.sample,
+          role: 'standard'
   )
 end
 
