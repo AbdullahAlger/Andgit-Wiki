@@ -31,7 +31,7 @@ feature "User registers" do
     fill_in "Password", with: "test-password"
     click_button "Log in"
 
-    expect(current_path).to eq "/"
+    expect(current_path).to eq "/wikis"
     expect(page).to have_content "Signed in successfully."
     expect(page).to have_content "Hello, tester@example.tld"
   end
