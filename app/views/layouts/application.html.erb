@@ -5,46 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src="//use.edgefonts.net/alegreya.js"></script>
+  <script src="https://use.edgefonts.net/alegreya;bebas-neue.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <ul class="nav navbar-nav">
-    <li><%= link_to "Blocipedia", root_path %></li>
-    <li><%= link_to "Wikis", wikis_path %></li>
-  </ul>
-  <div class="navbar-right user-info">
-    <% if current_user %>
-      Hello, <%= current_user.email %>! <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign In", new_user_session_path %> or
-      <%= link_to "Register", new_user_registration_path %>
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Blocipedia", root_path %></li>
+    <% if user_signed_in? %>
+      <li><%= link_to "Wikis", wikis_path %></li>
     <% end %>
-  </div>
-
-  <%if flash[:notice] %>
-    <div class="alert alert-success">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <%= flash[:notice] %>
+    </ul>
+    <div class="navbar-right user-info">
+      <% if user_signed_in? %>
+        Hello, <%= link_to (current_user.email || current_user.email) %>!
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <span class="glyphicon glyphicon-log-out"></span>
+        <% end %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %>
+        <%= link_to "Register", new_user_registration_path %>
+      <% end %>
     </div>
+  </nav>
+  <div class="flash">
+    <%if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
     <% elsif flash[:error] %>
-    <div class="alert alert-danger">
-      <button type="button" class="close" data-dimiss="alert">&times;</button>
-      <%= flash[:error] %>
-    </div>
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dimiss="alert">&times;</button>
+        <%= flash[:error] %>
+      </div>
     <% elsif flash[:alert] %>
-    <div class="alert alert-warning">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <%= flash[:alert] %>
-    </div>
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
     <% end %>
-</nav>
-<div class="container">
-  <div class="row">
-    <%= yield %>
   </div>
+<div class="container">
+    <%= yield %>
 </div>
-
 </body>
 </html>

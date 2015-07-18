@@ -16,42 +16,56 @@
 $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
 @import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
+@import "home";
 
 body {
-  background-color: #FDF3E7;
   margin: 0;
+  font-family: alegreya, serif;
+  background-color: rosybrown;
+}
 
   .navbar {
     background-color: #C63D0F;
     border-radius: 0;
+    font-size: 1.2em;
+    margin-left: -20px;
+    margin-right: -20px;
+    border: none;
 
     .navbar-nav {
-
-      a {
-        color: #3B3738;
-      }
+      margin-left: 50px;
+      font-family: bebas-neue, sans-serif;
+      font-size: 2em;
+      color: #333333;
 
       li {
         a {
-          padding: 30px;
+          padding: 40px;
+          color: #333333;
         }
       }
 
       li:hover {
-        background-color: #7E8F7C;
+        background-color: #777;
       }
     }
 
     .user-info {
-      margin-top: 30px;
-      margin-right: 20px;
-      color: #3B3738;
+      margin-top: 35px;
+      margin-right: 60px;
+      color: linen;
+      font-family: bebas-neue, sans-serif;
 
       a {
-        color: #7E8F7C;
+        color: linen;
+      }
+        span {
+          margin-left: 10px;
+
+        }
       }
     }
-  }
-}
+
+
 
 

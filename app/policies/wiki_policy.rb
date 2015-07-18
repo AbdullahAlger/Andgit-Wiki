@@ -2,7 +2,7 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.present? && (user.admin?)
+      if user.present? && user.admin?
         scope.all
       else
         scope.where(private: false)
