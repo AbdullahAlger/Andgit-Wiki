@@ -16,12 +16,12 @@
 $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
 @import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
-@import "home";
+
+@import "_font_styles";
 
 body {
   margin: 0;
-  font-family: alegreya, serif;
-  background-color: rosybrown;
+  background-color: rgba(13.7, 12.2, 12.5, 0.8);
 }
 
   .navbar {
@@ -31,17 +31,17 @@ body {
     margin-left: -20px;
     margin-right: -20px;
     border: none;
+    font-family: $navbar-style;
 
     .navbar-nav {
       margin-left: 50px;
-      font-family: bebas-neue, sans-serif;
       font-size: 2em;
-      color: #333333;
+      color: #fff;
 
       li {
         a {
           padding: 40px;
-          color: #333333;
+          color: #fff;
         }
       }
 
@@ -53,11 +53,11 @@ body {
     .user-info {
       margin-top: 35px;
       margin-right: 60px;
-      color: linen;
-      font-family: bebas-neue, sans-serif;
+      color: #fff;
+      font-size: 1.2em;
 
       a {
-        color: linen;
+        color: #fff;
       }
         span {
           margin-left: 10px;
@@ -66,6 +66,8 @@ body {
       }
     }
 
+@import 'home';
+@import 'wikis';
 
 
 
