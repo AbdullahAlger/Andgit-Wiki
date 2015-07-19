@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "https://use.edgefonts.net/alegreya;bebas-neue;league-gothic;source-sans-pro:n2.js" %>
+  <%= javascript_include_tag "https://use.edgefonts.net/alegreya;bebas-neue;league-gothic;source-sans-pro:n2,n8.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body class="homepage">
-  <%= yield :top_bar %>
   <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
-      <li><%= link_to "Blocipedia", root_path %></li>
-    <% if user_signed_in? %>
-      <li><%= link_to "Wikis", wikis_path %></li>
-    <% end %>
+      <li>Blocipedia</li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Wikis", wikis_path %></li>
+     <% end %>
     </ul>
     <div class="navbar-right user-info">
       <% if user_signed_in? %>
@@ -24,7 +23,7 @@
           <span class="glyphicon glyphicon-log-out"></span>
         <% end %>
       <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
+        <%= link_to "Sign In", new_user_session_path %> |
         <%= link_to "Register", new_user_registration_path %>
       <% end %>
     </div>

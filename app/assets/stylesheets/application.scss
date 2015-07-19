@@ -16,16 +16,19 @@
 $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
 @import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
+@import "fontawesome/css/font-awesome.css";
 
-@import "_font_styles";
+@import "_default_styles";
 
 body {
   margin: 0;
-  background-color: rgba(13.7, 12.2, 12.5, 0.8);
+  background-color: $background-color;
+  width: 100%;
+  z-index: 0;
 }
 
   .navbar {
-    background-color: #C63D0F;
+    background-color: $navbar-color;
     border-radius: 0;
     font-size: 1.2em;
     margin-left: -20px;
@@ -36,12 +39,12 @@ body {
     .navbar-nav {
       margin-left: 50px;
       font-size: 2em;
-      color: #fff;
+      color: $primary-font-color;
 
       li {
+        padding: 25px;
         a {
-          padding: 40px;
-          color: #fff;
+          color: $primary-font-color;
         }
       }
 
@@ -53,11 +56,11 @@ body {
     .user-info {
       margin-top: 35px;
       margin-right: 60px;
-      color: #fff;
+      color: $primary-font-color;
       font-size: 1.2em;
 
       a {
-        color: #fff;
+        color: $primary-font-color;
       }
         span {
           margin-left: 10px;

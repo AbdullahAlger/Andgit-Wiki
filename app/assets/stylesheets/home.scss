@@ -1,9 +1,35 @@
 .front-page {
-  color: #fff;
+  color: $primary-font-color;
   font-family: $front-page-text;
+  text-align: center;
 
   h1 {
-    text-align: center;
+    margin-top: 50px;
     font-size: 4em;
   }
+
+  .customer-queries {
+    margin-top: 100px;
+
+    .info-block {
+      padding: 30px;
+
+      i {
+        float: left;
+      }
+
+      .info-title {
+        font-size: 1.2em;
+        font-weight: 800;
+
+      }
+
+      p {
+        text-align: left;
+        font-size: 0.8em;
+        font-weight: 300;
+      }
+    }
+  }
+
 }

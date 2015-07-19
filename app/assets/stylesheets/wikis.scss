@@ -2,23 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.links {
-  font-family: $list-style;
+.wiki-page-defaults {
+  font-family: $list-font-style;
+  color: $primary-font-color;
 
-  .title {
+  h1 {
+    text-align: center;
+    font-size: 4em;
+  }
+
+  .wiki-display {
     height: 40px;
     margin: 20px auto;
+    border-top: 1px solid white;
 
     span {
       display: block;
     }
 
+    .wiki-title {
+      margin-top: 10px;
+    }
+
     a {
-      color: #fff;
+      color: $primary-font-color;
       text-decoration: none;
 
       &:hover {
-        color: #660000;
+        color: $list-hover-color;
       }
     }
   }
