@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root to: "home#index"
 
   devise_for :users
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   resources :wikis
-
+  resources :charges, only: [:new, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

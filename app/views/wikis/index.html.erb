@@ -1,21 +1,22 @@
- <div class="row wiki-page-defaults">
-    <h1>All Wikis</h1>
-    <div class="col-xs-6">
-      <% @wikis.each do |wiki| %>
-        <div class="wiki-display">
-          <span class="wiki-title"><%= link_to wiki.title, wiki %></span>
-          <span class="wiki-post-information">
-            <small>
-              Created by: <%= wiki.user.name %>, <%= time_ago_in_words(wiki.created_at) %> ago
-            </small>
-          </span>
-        </div>
-      <% end %>
+<section class="container" id="wiki-all">
+  <div class="row">
+      <h1>All Wikis</h1>
+      <div class="col-xs-1"></div>
+      <div class="col-xs-6 wiki-page-defaults">
+        <% @wikis.each do |wiki| %>
+          <div class="wiki-display">
+            <span class="wiki-title"><%= link_to wiki.title, wiki %></span>
+            <span class="wiki-post-information">
+              <small>
+                Created by: <%= wiki.user.name %>, <%= time_ago_in_words(wiki.created_at) %> ago
+              </small>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-1"></div>
+      <div class="col-xs-4">
+        <%= link_to "New Wiki", new_wiki_path, class: "btn btn-success" %>
+      </div>
     </div>
-    <div class="col-xs-2"></div>
-    <div class="col-xs-4">
-      <%= link_to "New Wiki", new_wiki_path, class: "btn btn-success" %>
-    </div>
-  </div>
-</div>
-
+</section>

@@ -4,9 +4,12 @@
     <%= f.text_field :title, class: "form-control", placeholder: "Enter title here ..." %>
   </div>
   <div class="form-group">
-    <%= f.label "Private?" %>
-    <%= f.check_box :private, class: "checkbox" %>
-  </div>
+   <% if (current_user.premium? && wiki.user_id == current_user.id) || current_user.admin? %>
+      <%= f.check_box :private, class: "checkbox" do %>
+        <%= f.label "Private?" %>
+      <% end %>
+   <% end %>
+   </div>
   <div class="form-group">
     <%= f.label "Wiki" %>
     <%= f.text_area :body, rows: 20, class: "form-control", placeholder: "Enter wiki info here ..." %>

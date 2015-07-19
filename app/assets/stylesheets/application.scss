@@ -21,10 +21,7 @@ $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
 @import "_default_styles";
 
 body {
-  margin: 0;
-  background-color: $background-color;
-  width: 100%;
-  z-index: 0;
+  margin: 0 auto;
 }
 
   .navbar {
@@ -35,6 +32,7 @@ body {
     margin-right: -20px;
     border: none;
     font-family: $navbar-style;
+    margin-bottom: 0;
 
     .navbar-nav {
       margin-left: 50px;
@@ -67,7 +65,18 @@ body {
 
         }
       }
+
     }
+
+.alert {
+  margin-top: 20px;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  text-align: center;
+  font-family: $navbar-style;
+  border-radius: 0;
+}
 
 @import 'home';
 @import 'wikis';

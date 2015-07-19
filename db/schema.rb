@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717165311) do
+ActiveRecord::Schema.define(version: 20150719164105) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150717165311) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "role",                   default: "standard"
+    t.string   "stripe_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

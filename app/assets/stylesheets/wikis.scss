@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.wiki-page-defaults {
+section#wiki-all {
   font-family: $list-font-style;
-  color: $primary-font-color;
+  color: $wiki-font-color;
 
   h1 {
     text-align: center;
@@ -14,7 +14,6 @@
   .wiki-display {
     height: 40px;
     margin: 20px auto;
-    border-top: 1px solid white;
 
     span {
       display: block;
@@ -25,13 +24,42 @@
     }
 
     a {
-      color: $primary-font-color;
+      color: $wiki-font-color;
       text-decoration: none;
 
       &:hover {
         color: $list-hover-color;
       }
     }
+  }
+}
+
+section#wiki-show {
+  font-family: $list-font-style;
+  color: $wiki-font-color;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .wiki-body-container {
+    margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    white-space: pre-wrap;
+
+  }
+}
+
+section#wiki-new {
+  font-family: $list-font-style;
+  color: $wiki-font-color;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
 

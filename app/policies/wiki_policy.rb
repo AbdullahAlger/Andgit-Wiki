@@ -10,7 +10,6 @@ class WikiPolicy < ApplicationPolicy
     end
   end
 
-
   def index
     true
   end

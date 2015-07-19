@@ -21,3 +21,5 @@ vendor/assets/components
 
 # Ignore application configuration
 /config/application.yml
+/config/initializers/stripe.rb
+
