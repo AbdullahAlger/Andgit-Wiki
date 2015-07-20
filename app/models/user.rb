@@ -6,7 +6,13 @@ class User < ActiveRecord::Base
 
   has_many :wiki, dependent: :destroy
 
-  after_initialize :set_role
+  after_initialize :init
+
+  def init
+    if new_record?
+      self.role ||= "standard"
+    end
+  end
 
   def admin?
     role == 'admin'
@@ -16,14 +22,8 @@ class User < ActiveRecord::Base
     role == 'premium'
   end
 
-  def upgrade_account?
+  def upgrade_account
     self.update_attributes(role: "premium")
-  end
-
-  def set_role
-    if self.role == nil
-      update_attributes(role: "standard")
-    end
   end
 
 end

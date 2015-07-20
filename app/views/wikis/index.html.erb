@@ -5,7 +5,8 @@
       <div class="col-xs-6 wiki-page-defaults">
         <% @wikis.each do |wiki| %>
           <div class="wiki-display">
-            <span class="wiki-title"><%= link_to wiki.title, wiki %></span>
+            <span class="wiki-title">
+              <%= link_to wiki.title, wiki %></span>
             <span class="wiki-post-information">
               <small>
                 Created by: <%= wiki.user.name %>, <%= time_ago_in_words(wiki.created_at) %> ago
@@ -16,7 +17,14 @@
       </div>
       <div class="col-xs-1"></div>
       <div class="col-xs-4">
-        <%= link_to "New Wiki", new_wiki_path, class: "btn btn-success" %>
+        <div class="new-wiki-button">
+          <%= link_to "New Wiki", new_wiki_path, class: "btn btn-success" %>
+        </div>
+        <% if current_user.role == "standard" || current_user.admin? %>
+          <div class="upgrade-button">
+            <%= link_to "Upgrade Account", new_charge_path %>
+          </div>
+        <% end %>
       </div>
     </div>
 </section>

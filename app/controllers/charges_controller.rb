@@ -1,14 +1,12 @@
 class ChargesController < ApplicationController
 
   def new
-
     @stripe_btn_data = {
         key: "#{Rails.configuration.stripe[:publishable_key]}",
         description: "Premium Membership - #{current_user.name}",
         amount: amount
     }
   end
-
 
   def create
 
@@ -24,7 +22,9 @@ class ChargesController < ApplicationController
       currency: 'usd'
     )
 
-    flash[:success] = "Thanks for subscribing, #{current_user.name}!"
+    flash[:success] = "Thanks for the contribution, #{current_user.name}!"
+    current_user.update_attributes(stripe_id: customer.id)
+    current_user.upgrade_account
     redirect_to wikis_path
 
   rescue Stripe::CardError => e

@@ -18,6 +18,7 @@ gem 'faker'
 gem 'pundit'
 gem 'figaro', '1.0'
 gem 'bourbon'
+gem 'pry-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -57,6 +58,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 
   gem 'stripe'
+
+  gem 'puma'
 
 end
 

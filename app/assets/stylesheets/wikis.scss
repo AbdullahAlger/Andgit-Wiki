@@ -32,6 +32,15 @@ section#wiki-all {
       }
     }
   }
+
+  .upgrade-button {
+    border: 2px solid forestgreen;
+    margin: 5px 10px;
+    a {
+      color: forestgreen;
+    }
+  }
+
 }
 
 section#wiki-show {

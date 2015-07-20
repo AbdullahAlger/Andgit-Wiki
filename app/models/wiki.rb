@@ -1,4 +1,7 @@
 class Wiki < ActiveRecord::Base
   belongs_to :user
-  scope :visible_to, -> (user) {user ? all : where(private: true)}
+
+  default_scope { order('created_at DESC') }
+  scope :visible_to, -> (user) { user ? all : where(private: false) }
+
 end
