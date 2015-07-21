@@ -11,14 +11,15 @@
 <body class="homepage">
   <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
-      <li>Blocipedia</li>
+      <li class="logo">Blocipedia</li>
       <% if user_signed_in? %>
-        <li><%= link_to "Wikis", wikis_path %></li>
+        <li class="wiki-links"><%= link_to "Wikis", wikis_path %></li>
+        <li class="wiki-links"><%= link_to "My Wikis", users_path %></li>
      <% end %>
     </ul>
     <div class="navbar-right user-info">
       <% if user_signed_in? %>
-        Hello, <%= link_to current_user.email, edit_user_registration_path %>!
+        Hello, <%= link_to current_user.name, edit_user_registration_path %>
         <%= link_to destroy_user_session_path, method: :delete do %>
           <span class="glyphicon glyphicon-log-out"></span>
         <% end %>

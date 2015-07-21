@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to: "home#index"
 
   devise_for :users
@@ -15,6 +14,10 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   resources :wikis
+
+  resources :users, only: [:index] do
+    resources :wikis
+  end
 
   resources :charges, only: [:new, :create]
 

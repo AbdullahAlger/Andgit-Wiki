@@ -33,12 +33,41 @@ section#wiki-all {
     }
   }
 
-  .upgrade-button {
-    border: 2px solid forestgreen;
-    margin: 5px 10px;
+  .new-wiki-button {
     a {
+      background-color: transparent;
       color: forestgreen;
+      border: 1px solid forestgreen;
+      border-radius: 0;
+
+      &:hover {
+        @include transition(all 0.7s ease-in-out);
+        background-color: forestgreen;
+        color: $primary-font-color;
+      }
     }
+  }
+
+  .upgrade-button {
+    margin-top: 40px;
+
+    a {
+      font-size: 1.3em;
+      padding: 10px 20px;
+      border-radius: 0;
+      background-color: transparent;
+      color: forestgreen;
+      border: 1px solid forestgreen;
+
+
+      &:hover {
+        @include transition(all 0.7s ease-in-out);
+        background-color: forestgreen;
+        color: $primary-font-color;
+
+      }
+    }
+
   }
 
 }
