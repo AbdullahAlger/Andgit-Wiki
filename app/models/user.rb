@@ -4,15 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :timeoutable, :lockable
 
-  has_many :wiki, dependent: :destroy
+  has_many :wikis, dependent: :destroy
 
-  after_initialize :init
+  validates :role, presence: true, inclusion: { in: %w(standard premium admin), message: "should be one of admin, premium, standard" }
 
-  def init
-    if new_record?
-      self.role ||= "standard"
-    end
-  end
 
   def admin?
     role == 'admin'
@@ -22,8 +17,29 @@ class User < ActiveRecord::Base
     role == 'premium'
   end
 
+  def standard?
+    role == 'standard'
+  end
+
   def upgrade_account
-    self.update_attributes(role: "premium")
+    if self.role == "standard"
+      self.update_attributes(role: "premium")
+    end
+  end
+
+  def can_privatize_wiki?(wiki)
+    (self.premium? && wiki.is_owned_by?(self)) || self.admin?
+  end
+
+  def make_wikis_public
+    wikis.each do |wiki|
+      wiki.update_attributes(private: false)
+    end
+  end
+
+  def downgrade_account
+    self.update_attributes(role: "standard")
+    self.make_wikis_public
   end
 
 end

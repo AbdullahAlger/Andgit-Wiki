@@ -11,8 +11,17 @@ $front-page-text: source-sans-pro, sans-serif;
  * Colors
 */
 
-$navbar-color: #C63D0F;
-$primary-font-color: #fff;
-$wiki-font-color: #000;
-$list-hover-color: #c2c2c2;
+$red-orange: #C63D0F;
+$white: #fff;
+$black: #000;
+$grey-tint: #c2c2c2;
+
+/*
+ * Colors assigned to classes
+*/
+
+$navbar-color: $red-orange;
+$primary-font-color: $white;
+$wiki-font-color: $black;
+$list-hover-color: $grey-tint;
 

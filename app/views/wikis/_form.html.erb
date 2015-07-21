@@ -3,11 +3,11 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control", placeholder: "Enter title here ..." %>
   </div>
-  <% if current_user.premium? || current_user.admin? %>
-    <div class="form-group">
+  <% if current_user.can_privatize_wiki?(wiki) %>
+      <div class="form-group">
       <%= f.label :private do %> Private wiki
         <%= f.check_box :private, class: "checkbox" %>
-   <% end %>
+      <% end %>
     </div>
   <% end %>
   <div class="form-group">

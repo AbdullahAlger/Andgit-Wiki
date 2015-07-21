@@ -4,4 +4,8 @@ class Wiki < ActiveRecord::Base
   default_scope { order('created_at DESC') }
   scope :visible_to, -> (user) { user ? all : where(private: false) }
 
+  def is_owned_by?(candidate)
+    candidate == user
+  end
+
 end
