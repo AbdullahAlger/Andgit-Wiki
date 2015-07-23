@@ -19,6 +19,7 @@ gem 'pundit'
 gem 'figaro', '1.0'
 gem 'bourbon'
 gem 'pry-rails'
+gem 'redcarpet'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

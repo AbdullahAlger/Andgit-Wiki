@@ -1,6 +1,6 @@
 <section class="container" id="wiki-show">
   <div class="row">
-    <h2><%= @wiki.title %></h2>
+    <h2><%= @wiki.markdown_title %></h2>
     <div class="col-md-12">
       <div class="col-md-2"></div>
       <div class="col-md-8">
@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-2"></div>
     <div class="wiki-body-container col-md-8">
-      <%= @wiki.body %>
+      <%= @wiki.markdown_body %>
     </div>
     <div class="col-md-2"></div>
   </div>

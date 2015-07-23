@@ -5,7 +5,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def show
-    record.private == false || user.present?
+    !record.private? || user.present?
   end
 
   def destroy
