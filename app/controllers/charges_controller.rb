@@ -35,12 +35,6 @@ class ChargesController < ApplicationController
 
   end
 
-  def downgrade
-    current_user.downgrade_account
-    flash[:notice] = "You're now a standard user."
-    redirect_to wikis_path
-  end
-
   private
 
   def amount_in_us_cents_for_membership

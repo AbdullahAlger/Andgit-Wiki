@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  devise_scope :user do
-    get "/downgrade" => "charges#downgrade"
-  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -16,6 +13,7 @@ Rails.application.routes.draw do
   resources :wikis
 
   resources :users, only: [:index] do
+    patch "downgrade"
     resources :wikis
   end
 

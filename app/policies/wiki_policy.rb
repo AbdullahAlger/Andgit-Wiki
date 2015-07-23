@@ -1,17 +1,11 @@
 class WikiPolicy < ApplicationPolicy
 
-  class Scope < Scope
-    def resolve
-      if user.present? && user.admin?
-        scope.all
-      else
-        scope.where(private: false)
-      end
-    end
-  end
-
   def index
     true
+  end
+
+  def show
+    record.private == false || user.present?
   end
 
   def destroy

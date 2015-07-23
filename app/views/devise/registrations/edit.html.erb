@@ -35,7 +35,7 @@
 <% if current_user.premium? %>
   <h3>Downgrade my premium account</h3>
   <div>
-    <%= link_to 'Downgrade', downgrade_path, class: 'btn btn-alert' %>
+    <%= link_to 'Downgrade', user_downgrade_path(current_user), class: 'btn btn-alert', method: :patch %>
   </div>
   <% elsif current_user.standard? %>
     <%= link_to "Join Blocipedia Premium", new_charge_path, class: "btn btn-success" %>

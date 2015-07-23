@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def upgrade_account
-    if self.role == "standard"
+    if self.standard?
       self.update_attributes(role: "premium")
     end
   end
@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   def can_privatize_wiki?(wiki)
     (self.premium? && wiki.is_owned_by?(self)) || self.admin?
   end
+
 
   def make_wikis_public
     wikis.each do |wiki|
