@@ -25,8 +25,16 @@ RSpec.describe User, type: :model do
       expect(user.errors[:role]).to include /admin/
     end
 
-
-
   end
+
+  context ".upgrade_account" do
+
+    it "should allow standard users to become premium users" do
+      user = User.new
+      user.upgrade_account
+      expect(user.role).to eq "premium"
+    end
+  end
+
 
 end

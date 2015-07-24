@@ -1,11 +1,10 @@
 FactoryGirl.define do
-  factory :user, aliases: [:owner] do
+  factory :user do
     name 'Pigeon Dan'
     email 'test@example.com'
-    role 'standard'
+    role {|r| "#{r}"}
     password 'helloworld'
     password_confirmation "helloworld"
     confirmed_at Time.now
   end
-
 end
