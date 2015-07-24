@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blocipedia</title>
+  <title>Andgit: Share your Knowledge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -11,7 +11,7 @@
 <body class="homepage">
   <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
-      <li class="logo">Blocipedia</li>
+      <li class="logo">Andgit</li>
       <% if user_signed_in? %>
         <li class="wiki-links"><%= link_to "Wikis", wikis_path %></li>
         <li class="wiki-links"><%= link_to "My Wikis", users_path %></li>
