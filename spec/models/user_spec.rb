@@ -22,8 +22,10 @@ RSpec.describe User, type: :model do
     it "should have a valid role" do
       user = User.new(role: "foo")
       expect(user.valid?).to eq false
-      expect(user.errors[:role]).to include("admin")
+      expect(user.errors[:role]).to include /admin/
     end
+
+
 
   end
 
