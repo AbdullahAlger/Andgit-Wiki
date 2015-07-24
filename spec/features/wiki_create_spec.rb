@@ -29,6 +29,7 @@ feature '[[create wikis]]' do
     expect(current_path).to eq('/wikis/1')
     expect(page).to have_content "Wiki was saved."
     expect(page).to have_content "New Wiki Title"
+    expect(page).to have_content "This is some content in the wiki."
   end
 
 end
