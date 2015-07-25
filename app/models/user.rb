@@ -31,7 +31,6 @@ class User < ActiveRecord::Base
     (self.premium? && wiki.is_owned_by?(self)) || self.admin?
   end
 
-
   def make_wikis_public
     wikis.each do |wiki|
       wiki.update_attributes(private: false)

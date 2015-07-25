@@ -1,8 +1,9 @@
+require "faker"
+
 FactoryGirl.define do
   factory :user do
-    name 'Pigeon Dan'
-    email 'test@example.com'
-    role {|r| "#{r}"}
+    name Faker::Name.name
+    email Faker::Internet.email
     password 'helloworld'
     password_confirmation "helloworld"
     confirmed_at Time.now
