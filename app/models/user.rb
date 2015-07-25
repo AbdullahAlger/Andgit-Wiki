@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :timeoutable, :lockable
 
   has_many :wikis, dependent: :destroy
+  has_many :collaborators
 
   validates :role, presence: true, inclusion: { in: %w(standard premium admin), message: "should be one of admin, premium, standard" }
 
@@ -38,8 +39,10 @@ class User < ActiveRecord::Base
   end
 
   def downgrade_account
-    self.update_attributes(role: "standard")
-    self.make_wikis_public
+    if self.premium?
+      self.update_attributes(role: "standard")
+      self.make_wikis_public
+    end
   end
 
 end
