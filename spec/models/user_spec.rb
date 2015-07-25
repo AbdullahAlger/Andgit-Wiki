@@ -39,17 +39,17 @@ RSpec.describe User, type: :model do
   context ".can_privatize_wiki?" do
 
     it "should allow premium users to privatize wikis" do
-      # user = User.new(role: "premium", id: 1)
-      # wiki = Wiki.new(user_id: user.id)
-      # wiki.is_owned_by?(user)
-      # expect(user.can_privatize_wiki?(wiki)).to eq true
-
+      @user.role = "premium"
+      wiki = Wiki.new(user_id: @user.id)
+      wiki.is_owned_by?(@user)
+      expect(@user.can_privatize_wiki?(wiki)).to eq true
     end
 
     it "should allow admins to privatize wikis" do
-    #   user = User.new(role: "admin", id: 1)
-    #   wiki = Wiki.new(user_id: user.id)
-    #   wiki.is_owned_by?(user)
+      @user.role = "admin"
+      wiki = Wiki.new(user_id: @user.id)
+      wiki.is_owned_by?(@user)
+      expect(@user.can_privatize_wiki?(wiki)).to eq true
     end
   end
 
@@ -60,7 +60,12 @@ RSpec.describe User, type: :model do
       @user.downgrade_account
       expect(@user.role).not_to eq "premium"
     end
-  end
 
+    it "should not downgrade an admin to a standard user" do
+      @user.role = "admin"
+      @user.downgrade_account
+      expect(@user.role).not_to eq "standard"
+    end
+  end
 
 end

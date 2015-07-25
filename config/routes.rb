@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  resources :wikis
+  resources :wikis do
+    resources :collaborators, only: [:create, :destroy]
+  end
 
   resources :users, only: [:index] do
     patch "downgrade"

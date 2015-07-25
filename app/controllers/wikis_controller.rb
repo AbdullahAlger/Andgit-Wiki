@@ -3,7 +3,7 @@ class WikisController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @wikis = Wiki.where('private = ?', false)
+    @wikis = policy_scope(Wiki)
   end
 
   def show
