@@ -3,7 +3,7 @@ require 'rails_helper'
 feature '[[create wikis]]' do
 
   before(:each) do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, :role => "standard")
     user.save
     login_as(user, :scope => :user)
   end
