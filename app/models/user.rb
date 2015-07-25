@@ -39,8 +39,10 @@ class User < ActiveRecord::Base
   end
 
   def downgrade_account
-    self.update_attributes(role: "standard")
-    self.make_wikis_public
+    if self.premium?
+      self.update_attributes(role: "standard")
+      self.make_wikis_public
+    end
   end
 
 end
