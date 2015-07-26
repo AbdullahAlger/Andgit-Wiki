@@ -2,7 +2,7 @@ class CollaboratorsController < ApplicationController
 
   def create
     @wiki = Wiki.find(params[:wiki_id])
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @collaborator = Collaborator.create(user: @user, wiki: @wiki)
 
     if @collaborator.save
