@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :timeoutable, :lockable
 
   has_many :wikis, dependent: :destroy
-  has_many :collaborators
+  has_many :collaborators, through: :wikis
 
   validates :role, presence: true, inclusion: { in: %w(standard premium admin), message: "should be one of admin, premium, standard" }
 
