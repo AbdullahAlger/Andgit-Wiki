@@ -46,4 +46,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def can_manage_collaborators?(wiki)
+    if wiki.is_owned_by?(self)
+      self.premium? || self.admin?
+    end
+  end
+
 end

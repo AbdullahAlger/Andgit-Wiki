@@ -3,7 +3,7 @@
   <div class="col-md-8">
     <%= render partial: "form", locals: { wiki: @wiki } %>
 
-    <% if current_user.premium? || current_user.admin? %>
+    <% if current_user.can_manage_collaborators?(@wiki) %>
       <h3>Collaborators</h3>
       <% @users.each do |user| %>
           <%= user.name %>
