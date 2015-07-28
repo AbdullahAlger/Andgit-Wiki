@@ -20,6 +20,8 @@ gem 'figaro', '1.0'
 gem 'bourbon'
 gem 'pry-rails'
 gem 'redcarpet'
+gem 'friendly_id', '~> 5.1.0'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -61,6 +63,7 @@ group :development, :test do
   gem 'stripe'
 
   gem 'puma'
+
 
 end
 
