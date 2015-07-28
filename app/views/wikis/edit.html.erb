@@ -2,19 +2,6 @@
 <div class="row">
   <div class="col-md-8">
     <%= render partial: "form", locals: { wiki: @wiki } %>
-
-    <% if current_user.can_manage_collaborators?(@wiki) %>
-      <h3>Collaborators</h3>
-      <% @users.each do |user| %>
-          <%= user.name %>
-          <% if @wiki.collaborators.pluck("user_id").include?(user.id) %>
-            <%= link_to "Remove", wiki_collaborator_path(@wiki, user), method: :delete%>
-          <% else %>
-            <%= link_to "Add", wiki_collaborators_path(wiki_id: @wiki, user_id: user), method: :post %>
-          <% end %>
-
-      <% end %>
-    <% end %>
-
+    <%= render partial: "collaborators/form", locals: { wiki: @wiki } %>
   </div>
 </div>
