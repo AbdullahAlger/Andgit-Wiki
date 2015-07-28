@@ -56,6 +56,11 @@ RSpec.describe User, type: :model do
       wiki = Wiki.new(user_id: @user.id)
       expect(@user.can_privatize_wiki?(wiki)).to eq true
     end
+
+    it "should not allow a standard user to privatize wikis" do
+      wiki = Wiki.new(user_id: @user.id)
+      expect(@user.can_privatize_wiki?(wiki)).to eq false
+    end
   end
 
   context ".downgrade_account" do
@@ -81,6 +86,7 @@ RSpec.describe User, type: :model do
       expect(@user.wikis.first.private?).to eq false
       expect(@user.wikis.last.private?).to eq false
     end
+
   end
 
 end
