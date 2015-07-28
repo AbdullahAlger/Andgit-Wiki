@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   before :each do
-    @user = FactoryGirl.create(:user)
+    @user = create(:user)
   end
 
   context "#initialize" do
@@ -73,8 +73,11 @@ RSpec.describe User, type: :model do
   end
 
   context ".make_wikis_public" do
-    xit "should change private wikis to public wikis" do
-
+    it "should change private wikis to public wikis" do
+      create_list(:wiki, 2, private: true, user: @user)
+      @user.make_wikis_public
+      expect(@user.wikis.first.private?).to eq false
+      expect(@user.wikis.last.private?).to eq false
     end
   end
 
