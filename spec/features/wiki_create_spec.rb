@@ -25,7 +25,7 @@ feature '[[create wikis]]' do
     fill_in :wiki_body, :with => "This is some content in the wiki."
 
     click_button "Save"
-    expect(current_path).to eq('/wikis/1')
+    expect(current_path).to eq('/wikis/new-wiki-title')
     expect(page).to have_content "Wiki was saved."
     expect(page).to have_content "New Wiki Title"
     expect(page).to have_content "This is some content in the wiki."

@@ -13,7 +13,6 @@ feature '[[delete wikis]]' do
   end
 
   scenario "click button to delete wiki" do
-    visit "/wikis/1"
     click_link "Delete"
     expect(page).to have_content "\"New Wiki Title\" was deleted."
   end

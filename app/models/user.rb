@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def upgrade_account
-    if self.standard?
+    unless self.admin?
       self.update_attributes(role: "premium")
     end
   end

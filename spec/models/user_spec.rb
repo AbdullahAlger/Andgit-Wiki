@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
     it "should have a valid role" do
       @user.role = "foo"
       expect(@user.valid?).to eq false
-      expect(@user.errors[:role]).to include /admin|standard|premium/
+      expect(@user.errors[:role]).to eq ["should be one of admin, premium, standard"]
     end
   end
 
@@ -35,10 +35,11 @@ RSpec.describe User, type: :model do
       expect(@user.role).to eq "premium"
     end
 
-    xit "should not allow admin to become premium user" do
+    it "should not allow admin to become premium user" do
       @user.role = "admin"
       @user.upgrade_account
       expect(@user.role).not_to eq "premium"
+      expect(@user.role).to eq "admin"
     end
   end
 
@@ -73,6 +74,7 @@ RSpec.describe User, type: :model do
   end
 
   context ".make_wikis_public" do
+
     it "should change private wikis to public wikis" do
       create_list(:wiki, 2, private: true, user: @user)
       @user.make_wikis_public

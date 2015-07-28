@@ -6,9 +6,6 @@ feature '[[edit wikis]]' do
     user = create(:user)
     login_as(user, scope: :user)
     visit "/wikis"
-
-    expect(page).to have
-
     click_link("Create Wiki")
     fill_in :wiki_title, :with => "New Wiki Title"
     fill_in :wiki_body, :with => "This is some content in the wiki."
@@ -16,7 +13,6 @@ feature '[[edit wikis]]' do
   end
 
   scenario "click button to edit wiki" do
-    visit "/wikis/1"
     click_link "Edit"
     fill_in :wiki_title, :with => "Edited Wiki Title"
     fill_in :wiki_body, :with => "Edited Wiki Content"
