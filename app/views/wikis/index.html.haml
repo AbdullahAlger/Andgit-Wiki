@@ -1,0 +1,21 @@
+%section.container#wiki-all
+  .row
+    .col-xs-1
+    .col-xs-6.wiki-page-defaults
+      - @wikis.each do |wiki|
+        .wiki-display
+          %span.wiki-title
+            = link_to wiki.title, wiki
+          %span.wiki-post-information
+            %small
+              Created by:
+              = wiki.user.name
+              = time_ago_in_words(wiki.created_at)
+              ago
+    .col-xs-1
+    .col-xs-4
+      .new-wiki-button
+        = link_to "Create wiki", new_wiki_path, class: "btn btn-success"
+      - if current_user.standard? || current_user.admin?
+        .upgrade-button
+          = link_to "Go Premium!", edit_user_registration_path, class: "btn btn-success"

@@ -1,0 +1,7 @@
+%section.container#personal-wikis
+  .row
+    .col-md-2
+    .col-md-8
+      - @wikis.each do |wiki|
+        %div= link_to wiki.title, wiki
+    .col-md-2

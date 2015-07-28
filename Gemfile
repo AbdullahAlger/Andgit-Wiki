@@ -21,6 +21,7 @@ gem 'bourbon'
 gem 'pry-rails'
 gem 'redcarpet'
 gem 'friendly_id', '~> 5.1.0'
+gem "haml"
 
 
 # Use jquery as the JavaScript library

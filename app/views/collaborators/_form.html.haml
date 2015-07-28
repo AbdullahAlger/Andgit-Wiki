@@ -1,0 +1,10 @@
+- if current_user.can_manage_collaborators?(@wiki)
+  .collaborator-partial
+    %h3 Collaborators
+    - @users.each do |user|
+      = user.name
+      - if @wiki.collaborators.pluck("user_id").include?(user.id)
+        = link_to "Remove", wiki_collaborator_path(@wiki, user), method: :delete
+      - else
+        = link_to "Add", wiki_collaborators_path(wiki_id: @wiki, user_id: user), method: :post
+

@@ -1,0 +1,7 @@
+%section.container#wiki-new
+  .row
+    %h2 New Wiki
+    .col-md-3
+    .col-md-6
+      = render partial: "form", locals: {wiki: @wiki}
+    .col-md-3

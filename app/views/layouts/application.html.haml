@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title Andgit: Share your Knowledge
+    %meta{"name" => "viewport", "content" => "width=device-width, initial-scale=1"}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "https://use.edgefonts.net/alegreya;bebas-neue;league-gothic;source-sans-pro:n2,n8.js"
+    = csrf_meta_tags
+%body.homepage
+  %nav.navbar.navbar-default
+    %ul.nav.navbar-nav
+      %li.logo Andgit
+      - if user_signed_in?
+        %li.wiki-links= link_to "Wikis", wikis_path
+        %li.wiki-links= link_to "My Wikis", users_path
+    .navbar-right.user-info
+      - if user_signed_in?
+        Hello,
+        = link_to current_user.name, edit_user_registration_path
+        = link_to destroy_user_session_path, method: :delete do
+          %span.glyphicon.glyphicon-log-out
+      - else
+        = link_to "Sign In", new_user_session_path
+        |
+        = link_to "Register", new_user_registration_path
+  - if flash[:notice]
+    .alert.alert-success
+      %button.close{"data-dismiss" => "alert", :type => "button"} ×
+      = flash[:notice]
+  - elsif flash[:error]
+    .alert.alert-danger
+      %button.close{"data-dimiss" => "alert", :type => "button"} ×
+      = flash[:error]
+  - elsif flash[:alert]
+    .alert.alert-warning
+      %button.close{"data-dismiss" => "alert", :type => "button"} ×
+      = flash[:alert]
+  = yield
