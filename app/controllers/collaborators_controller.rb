@@ -1,30 +1,31 @@
 class CollaboratorsController < ApplicationController
 
   def create
-    @wiki = Wiki.find(params[:wiki_id])
-    @user = User.find(params[:user_id])
-    @collaborator = Collaborator.create(user: @user, wiki: @wiki)
+    wiki = Wiki.find(params[:wiki_id])
+    user = User.find(params[:user_id])
+    collaborator = Collaborator.create(user: user, wiki: wiki)
 
-    if @collaborator.save
+    if collaborator.save
       flash[:notice] = "Collaborator added."
     else
-      flash[:notice] = "There was an error adding the collaborator. Please try again."
+      flash[:error] = "There was an error adding the collaborator. Please try again."
     end
+    redirect_to edit_wiki_path wiki
 
-    redirect_to edit_wiki_path @wiki
   end
 
   def destroy
-    @wiki = Wiki.find(params[:wiki_id])
-    @collaborator = @wiki.collaborators.where(user_id: params[:id]).first
+    wiki = Wiki.find(params[:wiki_id])
+    collaborator = wiki.collaborators.where(user_id: params[:id]).first
 
-    if @collaborator.destroy
+    if collaborator.destroy
       flash[:notice] = "Collaborator removed."
     else
-      flash[:notice] = "There was an error removing the collaborator. Please try again."
+      flash[:error] = "There was an error removing the collaborator. Please try again."
     end
+    redirect_to edit_wiki_path wiki
 
-    redirect_to edit_wiki_path @wiki
   end
+
 
 end

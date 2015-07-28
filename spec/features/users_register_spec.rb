@@ -33,6 +33,6 @@ feature "User registers" do
 
     expect(current_path).to eq "/wikis"
     expect(page).to have_content "Signed in successfully."
-    expect(page).to have_content "Hello, tester@example.tld"
+    expect(page).to have_content "Hello, John Jacob"
   end
 end

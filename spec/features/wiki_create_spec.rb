@@ -3,9 +3,8 @@ require 'rails_helper'
 feature '[[create wikis]]' do
 
   before(:each) do
-    user = FactoryGirl.create(:user, :role => "standard")
-    user.save
-    login_as(user, :scope => :user)
+    user = create(:user)
+    login_as(user, scope: :user)
   end
 
   scenario "click the button to make a new wiki" do
