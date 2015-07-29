@@ -62,6 +62,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 
   gem 'stripe'
+  gem "stripe_event"
 
   gem 'puma'
 
