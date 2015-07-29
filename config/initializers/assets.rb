@@ -22,5 +22,5 @@ puts "-"*20
 Rails.application.config.assets.precompile << %r(bootstrap-sass/assets/fonts/bootstrap/[\w-]+\.(?:eot|svg|ttf|woff2?)$)
 puts "-"*20
 
-Rails.application.config.assets.precompile << 'bootstrap-sass/assets/**/*.js'
+Rails.application.config.assets.precompile << 'bootstrap-sass/assets/javascripts/bootstrap-sprockets.js'
 puts "-"*20
