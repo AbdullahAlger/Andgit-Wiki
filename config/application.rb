@@ -33,6 +33,7 @@ module Andgit
     config.active_record.raise_in_transactional_callbacks = true
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    config.assets.precompile << %w( *.css *.js *.svg )
 
     config.generators do |generate|
       # Disable generation of helpers
