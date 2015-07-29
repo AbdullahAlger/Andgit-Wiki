@@ -1,5 +1,5 @@
 {
-  "name": "Blocipedia",
+  "name": "andgit",
   "version": "0.0.1",
   "homepage": "https://github.com/AbdullahAlger/blocipedia",
   "authors": [
@@ -23,7 +23,6 @@
   ],
   "dependencies": {
     "angular": "~1.4.2",
-    "bootstrap": "~3.3.5",
     "bootstrap-sass": "~3.3.5",
     "fontawesome": "~4.4.0"
   }
