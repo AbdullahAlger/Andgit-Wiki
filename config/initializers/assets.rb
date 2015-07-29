@@ -10,4 +10,6 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.scss, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 # Rails.application.config.assets.precompile << %r(bootstrap-sass/assets/fonts/bootstrap/[\w-]+\.(?:eot|svg|ttf|woff2?)$)
-Rails.application.config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
+Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+Rails.application.config.assets.precompile << %r(bootstrap-sass/assets/fonts/bootstrap/[\w-]+\.(?:eot|svg|ttf|woff2?)$)
+Rails.application.config.assets.precompile << 'bootstrap-sass/assets/**/*.js'

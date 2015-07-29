@@ -32,7 +32,7 @@ module Andgit
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    # config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
 
     # Bower asset paths
     # root.join('vendor', 'assets', 'bower_components').to_s.tap do |bower_path|
@@ -40,7 +40,7 @@ module Andgit
     #   config.assets.paths << bower_path
     # end
     # Precompile Bootstrap fonts
-    config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
+    # config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
     # Minimum Sass number precision required by bootstrap-sass
     # ::Sass::Script::Value::Number.precision = [8, ::Sass::Script::Value::Number.precision].max
 
