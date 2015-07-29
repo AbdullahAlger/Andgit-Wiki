@@ -13,11 +13,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'bootstrap-sass'
 gem 'devise'
 gem 'faker'
 gem 'pundit'
 gem 'figaro', '1.0'
-gem 'bourbon'
 gem 'pry-rails'
 gem 'redcarpet'
 gem 'friendly_id', '~> 5.1.0'

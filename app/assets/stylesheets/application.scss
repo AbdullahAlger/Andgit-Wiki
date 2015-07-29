@@ -14,9 +14,9 @@
 
 @import "bourbon";
 $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
-@import "../vendor/assets/components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
-@import "../vendor/assets/components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../vendor/assets/components/fontawesome/css/font-awesome.css";
+@import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+@import "bootstrap-sass/assets/stylesheets/bootstrap";
+@import "fontawesome/css/font-awesome.css";
 
 @import "_default_styles";
 @import "navigation";
