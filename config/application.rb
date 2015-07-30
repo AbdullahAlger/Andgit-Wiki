@@ -43,6 +43,7 @@ module Andgit
                                     File.extname(path).in? [
                                                                '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
                                                                '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+                                                               '.css'
                                                            ]
                                   end)
 
