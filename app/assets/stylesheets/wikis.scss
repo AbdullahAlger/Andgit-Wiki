@@ -25,11 +25,11 @@ section#wiki-all {
     }
 
     a {
-      color: $wiki-font-color;
+      color: #000;
       text-decoration: none;
 
       &:hover {
-        color: $list-hover-color;
+        color: #c2c2c2;
       }
     }
   }
@@ -44,7 +44,7 @@ section#wiki-all {
       &:hover {
         @include transition(all 0.7s ease-in-out);
         background-color: forestgreen;
-        color: $primary-font-color;
+        color: #fff;
       }
     }
   }
@@ -64,7 +64,7 @@ section#wiki-all {
       &:hover {
         @include transition(all 0.7s ease-in-out);
         background-color: forestgreen;
-        color: $primary-font-color;
+        color: #fff;
 
       }
     }
@@ -75,7 +75,7 @@ section#wiki-all {
 
 section#wiki-show {
   font-family: $list-font-style;
-  color: $wiki-font-color;
+  color: #000;
 
   h2 {
     text-align: center;
@@ -94,7 +94,7 @@ section#wiki-show {
 
 section#wiki-new {
   font-family: $list-font-style;
-  color: $wiki-font-color;
+  color: #000;
 
   h2 {
     text-align: center;

@@ -3,7 +3,7 @@ body {
 }
 
 .navbar {
-  background-color: $navbar-color;
+  background-color: #C63D0F;
   border-radius: 0;
   font-size: 1.2em;
   margin-left: -20px;
@@ -15,12 +15,12 @@ body {
   .navbar-nav {
     margin-left: 50px;
     font-size: 2em;
-    color: $primary-font-color;
+    color: #fff;
 
     li {
       padding: 20px;
       a {
-        color: $primary-font-color;
+        color: #fff;
       }
     }
 
@@ -33,11 +33,11 @@ body {
   .user-info {
     margin-top: 35px;
     margin-right: 60px;
-    color: $primary-font-color;
+    color: #fff;
     font-size: 1.2em;
 
     a {
-      color: $primary-font-color;
+      color: #fff;
     }
     span {
       margin-left: 10px;
