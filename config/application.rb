@@ -42,8 +42,7 @@ module Andgit
     config.assets.precompile.push(Proc.new do |path|
                                     File.extname(path).in? [
                                                                '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
-                                                               '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
-                                                               '.css'
+                                                               '.eot',  '.otf', '.svc', '.woff', '.ttf' # Fonts
                                                            ]
                                   end)
 
