@@ -47,9 +47,11 @@ class User < ActiveRecord::Base
   end
 
   def can_manage_collaborators?(wiki)
-    if wiki.is_owned_by?(self)
-      self.premium? || self.admin?
-    end
+    self.admin? || (self.premium? && wiki.is_owned_by?(self))
+  end
+
+  def upgradeable?
+    self.standard?
   end
 
 end

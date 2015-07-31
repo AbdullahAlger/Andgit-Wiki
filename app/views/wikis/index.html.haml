@@ -16,6 +16,6 @@
     .col-xs-4
       .new-wiki-button
         = link_to "Create wiki", new_wiki_path, class: "btn btn-success"
-      - if current_user.standard? || current_user.admin?
+      - if current_user.upgradeable?
         .upgrade-button
           = link_to "Go Premium!", edit_user_registration_path, class: "btn btn-success"

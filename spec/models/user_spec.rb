@@ -93,23 +93,20 @@ RSpec.describe User, type: :model do
 
     it "should allow private users to have collaborators" do
       @user.role = "premium"
-      create_list(:wiki, 1, private: true, user: @user)
-      collab = @user.can_manage_collaborators?(@user.wikis.first)
-      expect(collab).to eq true
+      wiki = create(:wiki, private: true, user: @user)
+      expect(@user.can_manage_collaborators?(wiki)).to eq true
     end
 
     it "should allow admin users to have collaborators" do
       @user.role = "admin"
-      create_list(:wiki, 1, private: true, user: @user)
-      collab = @user.can_manage_collaborators?(@user.wikis.first)
-      expect(collab).to eq true
+      wiki = create(:wiki, private: true, user: @user)
+      expect(@user.can_manage_collaborators?(wiki)).to eq true
     end
 
     it "should not allow standard users to have collaborators" do
       @user.role = "standard"
-      create_list(:wiki, 1, private: true, user: @user)
-      collab = @user.can_manage_collaborators?(@user.wikis.first)
-      expect(collab).to eq false
+      wiki = create(:wiki, private: true, user: @user)
+      expect(@user.can_manage_collaborators?(wiki)).to eq false
     end
   end
 

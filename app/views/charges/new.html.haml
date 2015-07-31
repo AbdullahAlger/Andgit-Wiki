@@ -1,0 +1,9 @@
+%section.container#charges
+  .row
+    .col-md-2
+    .col-md-8
+      %h4 Get Your Premium Account Now!
+      .charges-disclaimer
+      .payment-button
+        = form_tag charges_path do
+          %script.stripe-button{"data-amount" => @stripe_btn_data[:amount], "data-description" => @stripe_btn_data[:description], "data-key" => @stripe_btn_data[:key], :src => "https://checkout.stripe.com/checkout.js"}
