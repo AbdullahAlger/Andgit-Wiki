@@ -1,3 +1,28 @@
 // Place all the styles related to the charges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#charges {
+  margin-top: 50px;
+  font-family: alegreya, serif;
+  color: #000;
+}
+
+h2 {
+  text-align: center;
+}
+
+.charges-disclaimer {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 30px;
+  margin-top: 20px;
+
+  .disclaimer {
+    font-weight: bold;
+  }
+}
+
+.payment-button {
+  margin-top: 20px;
+}

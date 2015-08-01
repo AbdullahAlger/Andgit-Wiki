@@ -2,8 +2,11 @@
   .row
     .col-md-2
     .col-md-8
-      %h4 Get Your Premium Account Now!
+      .title
+        %h2 Get Your Premium Account Now!
       .charges-disclaimer
+        %p.disclaimer Dislaimer
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nibh in sem gravida consectetur vel eget nunc. Nullam luctus erat sed eros lacinia aliquam. Vivamus finibus metus at magna sollicitudin, non sagittis lectus gravida. Sed pharetra viverra lorem, eleifend ullamcorper velit sollicitudin vel. Proin eget urna id dui condimentum commodo. Maecenas turpis velit, auctor ut tortor non, euismod lobortis nunc. Etiam interdum sed leo quis dictum. Aliquam nec velit enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam lobortis justo sodales odio accumsan, bibendum finibus ligula auctor. Cras vel sollicitudin ante. Sed at luctus lectus.
       .payment-button
         = form_tag charges_path do
           %script.stripe-button{"data-amount" => @stripe_btn_data[:amount], "data-description" => @stripe_btn_data[:description], "data-key" => @stripe_btn_data[:key], :src => "https://checkout.stripe.com/checkout.js"}
