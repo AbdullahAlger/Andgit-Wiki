@@ -4,7 +4,11 @@ feature '[[create wikis]]' do
 
   before(:each) do
     user = create(:user)
-    login_as(user, scope: :user)
+    visit new_user_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button("Log in")
+    expect(page).to have_content("Signed in successfully")
   end
 
   scenario "click the button to make a new wiki" do
@@ -12,7 +16,7 @@ feature '[[create wikis]]' do
     visit "/wikis"
     expect(current_path).to eq("/wikis")
 
-    click_link("Create Wiki")
+    click_link("Create wiki")
     expect(page).to have_content("Title" && "Wiki")
   end
 
