@@ -27,5 +27,25 @@ RSpec.describe WikisController, :type => :controller do
     end
   end
 
+  context "Get show" do
+
+  end
+
+  context "POST create" do
+
+  end
+
+  context "Get edit" do
+
+  end
+
+  context "PATCH update" do
+
+  end
+
+  context "Delete wiki" do
+
+  end
+
 
 end
