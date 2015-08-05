@@ -31,9 +31,8 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.friendly.find(params[:id])
-    @users = User.all
+    @users = User.where.not(id: current_user)
     authorize @wiki
-
   end
 
   def update

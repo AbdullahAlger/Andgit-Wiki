@@ -16,6 +16,25 @@ RSpec.describe CollaboratorsController, :type => :controller do
       expect(Collaborator.exists?(collaborator.id)).to eq(true)
     end
 
+    it "should not allow an attacker to delete a victim's collaborator" do
+      attacker = create(:user)
+      victim = create(:user)
+      wiki = create(:wiki, user: victim)
+      collaborator = create(:collaborator, wiki: wiki)
+      params = {wiki_id: wiki.id, id: collaborator.user.id}
+
+      sign_in(attacker)
+
+      expect do
+        delete :destroy, params
+      end.to raise_error ActiveRecord::RecordNotFound
+      expect(Collaborator.exists?(collaborator.id)).to eq(true)
+    end
+
+    xit "a user can delete their collaborators" do
+
+    end
+
   end
 
 

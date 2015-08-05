@@ -3,7 +3,7 @@ class CollaboratorsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    wiki = Wiki.find(params[:wiki_id])
+    wiki = Wiki.friendly.find(params[:wiki_id])
     user = User.find(params[:user_id])
     collaborator = Collaborator.create(user: user, wiki: wiki)
 
@@ -17,8 +17,8 @@ class CollaboratorsController < ApplicationController
   end
 
   def destroy
-    wiki = Wiki.find(params[:wiki_id])
-    collaborator = wiki.collaborators.where(user_id: params[:id]).first
+    wiki = current_user.wikis.find(params[:wiki_id])
+    collaborator = wiki.collaborators.find(user_id: params[:id])
 
     if collaborator.destroy
       flash[:notice] = "Collaborator removed."
