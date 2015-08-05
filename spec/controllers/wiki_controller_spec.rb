@@ -28,7 +28,13 @@ RSpec.describe WikisController, :type => :controller do
   end
 
   context "Get show" do
-
+    it "shows a wiki" do
+      user = create(:user)
+      sign_in(user)
+      wiki = create(:wiki, user_id: user.id)
+      get :show
+      expect(response).to render_template(:show)
+    end
   end
 
   context "POST create" do
