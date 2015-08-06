@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe WikisController, :type => :controller do
 
   context "GET index" do
-
     it "should have a user who is signed in" do
       get :index
       expect(response).to have_http_status(:found)
@@ -38,19 +37,32 @@ RSpec.describe WikisController, :type => :controller do
   end
 
   context "POST create" do
+    it "creates a wiki" do
+      user = create(:user)
+      sign_in(user)
 
+    end
   end
 
   context "Get edit" do
-
+    it "edits a wiki" do
+      user = create(:user)
+      sign_in(user)
+    end
   end
 
   context "PATCH update" do
-
+    it "updates a wiki" do
+      user = create(:user)
+      sign_in(user)
+    end
   end
 
   context "Delete wiki" do
-
+    it "deletes a wiki" do
+      user = create(:user)
+      sign_in(user)
+    end
   end
 
 
