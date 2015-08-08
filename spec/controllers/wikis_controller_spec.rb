@@ -26,18 +26,19 @@ RSpec.describe WikisController, :type => :controller do
     end
   end
 
-  context "Get show" do
+  context "GET show" do
     it "shows a wiki" do
       user = create(:user)
       sign_in(user)
-      wiki = create(:wiki, user_id: user.id)
-      get :show
-      expect(response).to render_template(:show)
+      wiki = create(:wiki, user: user)
+
+      get :show, id: wiki
+      expect(assigns(:wiki)).to eq(wiki)
     end
   end
 
   context "POST create" do
-    it "creates a wiki" do
+    xit "creates a wiki" do
       user = create(:user)
       sign_in(user)
 
@@ -45,21 +46,21 @@ RSpec.describe WikisController, :type => :controller do
   end
 
   context "Get edit" do
-    it "edits a wiki" do
+    xit "edits a wiki" do
       user = create(:user)
       sign_in(user)
     end
   end
 
   context "PATCH update" do
-    it "updates a wiki" do
+    xit "updates a wiki" do
       user = create(:user)
       sign_in(user)
     end
   end
 
   context "Delete wiki" do
-    it "deletes a wiki" do
+    xit "deletes a wiki" do
       user = create(:user)
       sign_in(user)
     end
