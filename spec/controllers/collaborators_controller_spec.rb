@@ -28,6 +28,7 @@ RSpec.describe CollaboratorsController, :type => :controller do
       expect do
         delete :destroy, params
       end.to raise_error ActiveRecord::RecordNotFound
+
       expect(Collaborator.exists?(collaborator.id)).to eq(true)
     end
 
