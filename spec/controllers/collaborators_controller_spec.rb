@@ -32,8 +32,18 @@ RSpec.describe CollaboratorsController, :type => :controller do
       expect(Collaborator.exists?(collaborator.id)).to eq(true)
     end
 
-    xit "a user can delete their collaborators" do
+    it "a user can delete their collaborators" do
+      user = create(:user)
+      wiki = create(:wiki, user: user)
+      collaborator = create(:collaborator, wiki: wiki)
+      params = {wiki_id: wiki.id, id: collaborator.user.id}
 
+      sign_in(user)
+
+      delete :destroy, params
+      expect(response).to have_http_status(:found)
+      expect(response).to redirect_to(edit_wiki_path wiki)
+      expect(Collaborator.exists?(collaborator.id)).to eq(false)
     end
 
   end

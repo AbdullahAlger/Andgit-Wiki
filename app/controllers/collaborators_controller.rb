@@ -13,12 +13,11 @@ class CollaboratorsController < ApplicationController
       flash[:error] = "There was an error adding the collaborator. Please try again."
     end
     redirect_to edit_wiki_path wiki
-
   end
 
   def destroy
-    wiki = current_user.wikis.find(params[:wiki_id])
-    collaborator = wiki.collaborators.find(user_id: params[:id])
+    wiki = current_user.wikis.friendly.find(params[:wiki_id])
+    collaborator = wiki.collaborators.where(user_id: params[:id]).first
 
     if collaborator.destroy
       flash[:notice] = "Collaborator removed."
@@ -26,8 +25,6 @@ class CollaboratorsController < ApplicationController
       flash[:error] = "There was an error removing the collaborator. Please try again."
     end
     redirect_to edit_wiki_path wiki
-
   end
-
 
 end
