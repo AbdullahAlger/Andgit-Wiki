@@ -43,18 +43,19 @@ RSpec.describe WikisController, :type => :controller do
   end
 
   context "POST create" do
-    xit "creates a wiki" do
+    it "creates a wiki" do
       user = create(:user)
       sign_in(user)
+      params = {wiki: {title: "valid title", body: "valid body"}}
 
-      post :create, id: wiki.slug
+      post :create, id: {wiki: {id: 1}}, wiki: params
       expect(response).to have_http_status(:found)
-      expect(response).to redirect_to wiki_url(wiki)
+      expect(response).to redirect_to(wiki_path)
     end
   end
 
   context "PATCH update" do
-    it "updates a wiki" do
+    xit "updates a wiki" do
       user = create(:user)
       sign_in(user)
       wiki = create(:wiki, user: user)
