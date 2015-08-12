@@ -5,4 +5,8 @@ module ApplicationHelper
     redcarpet = Redcarpet::Markdown.new(renderer, extensions)
     (redcarpet.render markdown).html_safe
   end
+
+  def collaborators
+    User.where.not(id: current_user)
+  end
 end

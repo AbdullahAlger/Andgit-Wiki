@@ -21,6 +21,7 @@ feature '[[create wikis]]' do
 
   scenario "enter content to make a new wiki" do
 
+    click_link "Create wiki"
     visit "/wikis/new"
     expect(current_path).to eq("/wikis/new")
 

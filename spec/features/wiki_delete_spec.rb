@@ -6,7 +6,7 @@ feature '[[delete wikis]]' do
     user = create(:user)
     login_as(user, scope: :user)
     visit "/wikis"
-    click_link("Create Wiki")
+    click_link("Create wiki")
     fill_in :wiki_title, :with => "New Wiki Title"
     fill_in :wiki_body, :with => "This is some content in the wiki."
     click_button "Save"

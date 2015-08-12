@@ -17,12 +17,12 @@ class WikisController < ApplicationController
   end
 
   def create
-    wiki = current_user.wikis.build(wiki_params)
-    authorize wiki
+    @wiki = current_user.wikis.build(wiki_params)
+    authorize @wiki
 
-    if wiki.save
+    if @wiki.save
       flash[:notice] = "Wiki was saved."
-      redirect_to wiki
+      redirect_to @wiki
     else
       flash[:error] = "There was an error saving the wiki. Please try again."
       render :new
@@ -31,30 +31,29 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.friendly.find(params[:id])
-    @users = User.where.not(id: current_user)
     authorize @wiki
   end
 
   def update
-    wiki = Wiki.friendly.find(params[:id])
-    authorize wiki
+    @wiki = Wiki.friendly.find(params[:id])
+    authorize @wiki
 
-    if wiki.update_attributes(wiki_params)
+    if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki has been updated."
-      redirect_to wiki
+      redirect_to @wiki
     else
       flash[:error] = "There was an error saving the wiki. Please try again."
-      render :new
+      render :edit
     end
   end
 
   def destroy
-    wiki = Wiki.friendly.find(params[:id])
-    authorize wiki
+    @wiki = Wiki.friendly.find(params[:id])
+    authorize @wiki
 
-    if wiki.destroy
-      flash[:notice] = "\"#{wiki.title}\" was deleted."
-      redirect_to wiki
+    if @wiki.destroy
+      flash[:notice] = "\"#{@wiki.title}\" was deleted."
+      redirect_to @wiki
     else
       flash[:error] = "There was an error deleting this wiki. Please try again."
       render :show
