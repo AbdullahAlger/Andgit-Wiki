@@ -46,12 +46,12 @@ RSpec.describe WikisController, :type => :controller do
     it "creates a wiki" do
       user = create(:user)
       sign_in(user)
-      params = {wiki: {title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions"}}
+      params = {wiki: {title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions"}}
 
       post :create, params
       expect(response).to have_http_status(:found)
 
-      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions")
+      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions")
 
       expect(wiki).not_to be_nil
       expect(flash[:notice]).to eq "Wiki was saved."
@@ -61,12 +61,11 @@ RSpec.describe WikisController, :type => :controller do
     it "does not create a wiki if there isn't a title" do
       user = create(:user)
       sign_in(user)
-      params = {wiki: {title: "", body: "Angular testing causes brain malfunctions"}}
+      params = {wiki: {title: "", body: "Angular testing causes brain malfunctions, brain malfunctions"}}
       post :create, params
-      expect(response).to have_http_status(:found)
-      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions")
-      expect(flash[:notice]).to eq "Wiki was saved."
-
+      expect(response).to have_http_status(:ok)
+      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions")
+      expect(flash[:error]).to eq "There was an error saving the wiki. Please try again."
     end
 
     xit "does not create a wiki if there isn't a body" do
@@ -83,7 +82,7 @@ RSpec.describe WikisController, :type => :controller do
       user = create(:user)
       sign_in(user)
       wiki = create(:wiki, user: user)
-      params = {wiki: {title: "new title", body: "new body"}, id: wiki.slug}
+      params = {wiki: {title: "new title", body: "new bodynew bodynew bodynew bodynew body"}, id: wiki.slug}
 
       patch :update, params
       wiki.reload
@@ -91,7 +90,7 @@ RSpec.describe WikisController, :type => :controller do
       expect(response).to redirect_to(wiki_path(wiki))
       expect(response).to have_http_status(:found)
       expect(wiki.title).to eq "new title"
-      expect(wiki.body).to eq "new body"
+      expect(wiki.body).to eq "new bodynew bodynew bodynew bodynew body"
     end
 
     xit "allows a premium user to privatize a wiki" do
