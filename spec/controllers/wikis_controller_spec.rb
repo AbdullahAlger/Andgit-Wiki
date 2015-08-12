@@ -58,7 +58,14 @@ RSpec.describe WikisController, :type => :controller do
       expect(response).to redirect_to(wiki_path(wiki))
     end
 
-    xit "does not create a wiki if there isn't a title" do
+    it "does not create a wiki if there isn't a title" do
+      user = create(:user)
+      sign_in(user)
+      params = {wiki: {title: "", body: "Angular testing causes brain malfunctions"}}
+      post :create, params
+      expect(response).to have_http_status(:found)
+      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions")
+      expect(flash[:notice]).to eq "Wiki was saved."
 
     end
 

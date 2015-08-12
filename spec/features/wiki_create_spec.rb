@@ -11,14 +11,12 @@ feature '[[create wikis]]' do
     expect(page).to have_content("Signed in successfully")
   end
 
-  scenario "click the button to make a new wiki", js: true do
+  scenario "click the button to make a new wiki" do
 
     visit "/wikis"
     expect(current_path).to eq("/wikis")
-
-    click_link("Create wiki")
-    expect(page).to have_content("Title" && "Wiki")
-    expect(page).to have_content("Title").and have_content("Wiki")
+    click_link "Create wiki"
+    expect(current_path).to eq("/wikis/new")
   end
 
   scenario "enter content to make a new wiki" do
