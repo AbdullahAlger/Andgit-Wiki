@@ -52,7 +52,6 @@ RSpec.describe WikisController, :type => :controller do
       expect(response).to have_http_status(:found)
 
       wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions")
-
       expect(wiki).not_to be_nil
       expect(flash[:notice]).to eq "Wiki was saved."
       expect(response).to redirect_to(wiki_path(wiki))
@@ -63,8 +62,9 @@ RSpec.describe WikisController, :type => :controller do
       sign_in(user)
       params = {wiki: {title: "", body: "Angular testing causes brain malfunctions, brain malfunctions"}}
       post :create, params
+      wiki = Wiki.any?
+      expect(wiki).to eq false
       expect(response).to have_http_status(:ok)
-      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions")
       expect(flash[:error]).to eq "There was an error saving the wiki. Please try again."
     end
 
@@ -73,8 +73,9 @@ RSpec.describe WikisController, :type => :controller do
       sign_in(user)
       params = {wiki: {title: "Angular is fun, except testing it", body: ""}}
       post :create, params
+      wiki = Wiki.any?
+      expect(wiki).to eq false
       expect(response).to have_http_status(:ok)
-      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "")
       expect(flash[:error]).to eq "There was an error saving the wiki. Please try again."
     end
 
@@ -107,20 +108,17 @@ RSpec.describe WikisController, :type => :controller do
     end
 
     it "allows a premium user to privatize a wiki" do
-      user = create(:user)
+      user = create(:user, role: "premium")
       sign_in(user)
-      puts user.role
-      wiki = create(:wiki, user: user)
-      params = {wiki: {title: "new title", body: "new bodynew bodynew bodynew bodynew body", private: "1"}}
+      wiki = create(:wiki, user: user, private: false)
+      params = {wiki: {private: "1"}, id: wiki.slug}
 
-      post :create, params
+      patch :update, params
+      wiki.reload
+      expect(flash[:notice]).to eq "Wiki has been updated."
+      expect(response).to redirect_to(wiki_path(wiki))
       expect(response).to have_http_status(:found)
       expect(wiki.private).to eq true
-
-    end
-
-    xit "prevent a standard user from privatizing a wiki" do
-
     end
   end
 
@@ -136,9 +134,6 @@ RSpec.describe WikisController, :type => :controller do
       expect(Wiki.exists?(wiki.id)).to eq(false)
     end
 
-    xit "does not delete a wiki if the user selects cancel" do
-
-    end
   end
 
 
