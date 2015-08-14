@@ -18,3 +18,5 @@ feature '[[delete wikis]]' do
   end
 
 end
+
+#Consider replacing the wiki create steps in the before blocks of those 2 specs with using FactoryGirl.

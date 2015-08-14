@@ -68,12 +68,25 @@ RSpec.describe WikisController, :type => :controller do
       expect(flash[:error]).to eq "There was an error saving the wiki. Please try again."
     end
 
-    xit "does not create a wiki if there isn't a body" do
-
+    it "does not create a wiki if there isn't a body" do
+      user = create(:user)
+      sign_in(user)
+      params = {wiki: {title: "Angular is fun, except testing it", body: ""}}
+      post :create, params
+      expect(response).to have_http_status(:ok)
+      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "")
+      expect(flash[:error]).to eq "There was an error saving the wiki. Please try again."
     end
 
-    xit "creates a private wiki when checkbox is checked" do
-
+    it "creates a private wiki when checkbox is checked" do
+      user = create(:user)
+      sign_in(user)
+      params = {wiki: {title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions", private: "1"}}
+      post :create, params
+      expect(response).to have_http_status(:found)
+      wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions")
+      expect(flash[:notice]).to eq "Wiki was saved."
+      expect(wiki.private).to eq true
     end
   end
 
@@ -93,8 +106,17 @@ RSpec.describe WikisController, :type => :controller do
       expect(wiki.body).to eq "new bodynew bodynew bodynew bodynew body"
     end
 
-    xit "allows a premium user to privatize a wiki" do
+    it "allows a premium user to privatize a wiki" do
+      user = create(:user)
+      sign_in(user)
+      puts user.role
+      wiki = create(:wiki, user: user)
+      params = {wiki: {title: "new title", body: "new bodynew bodynew bodynew bodynew body", private: "1"}}
+
+      post :create, params
+      expect(response).to have_http_status(:found)
       expect(wiki.private).to eq true
+
     end
 
     xit "prevent a standard user from privatizing a wiki" do
