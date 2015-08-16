@@ -17,7 +17,8 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = current_user.wikis.build(wiki_params)
+    @wiki = current_user.wikis.build
+    @wiki.attributes = wiki_params(@wiki)
     authorize @wiki
 
     if @wiki.save
@@ -38,7 +39,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.friendly.find(params[:id])
     authorize @wiki
 
-    if @wiki.update_attributes(wiki_params)
+    if @wiki.update_attributes(wiki_params(@wiki))
       flash[:notice] = "Wiki has been updated."
       redirect_to @wiki
     else
@@ -61,7 +62,10 @@ class WikisController < ApplicationController
   end
 
   private
-  def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
+
+  def wiki_params(wiki)
+    permitted_attributes = [:title, :body]
+    permitted_attributes << :private if current_user.can_privatize_wiki?(wiki)
+    params.require(:wiki).permit(permitted_attributes)
   end
 end
