@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index] do
     patch "downgrade"
-    resources :wikis
+    resources :wikis, only: [:index]
   end
 
   resources :charges, only: [:new, :create]
