@@ -16,11 +16,11 @@ feature '[[index user wikis]]' do
   end
 
   scenario "click the 'My Wikis', but it doesn't show wikis made by other users" do
-    other_user = create(:user)
-    other_wiki = create(:wiki, user: other_user)
+    other_wiki = create(:wiki, title: "another user's wiki title")
     click_link "My Wikis"
     expect(current_path).to eq("/users")
-    expect(page).not_to have_content(other_wiki)
+    expect(page).to have_content(@wiki.title)
+    expect(page).not_to have_content(other_wiki.title)
   end
 
 end
