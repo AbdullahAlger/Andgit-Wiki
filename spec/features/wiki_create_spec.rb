@@ -12,14 +12,12 @@ feature '[[create wikis]]' do
   end
 
   scenario "click the button to make a new wiki" do
-
     expect(current_path).to eq("/wikis")
     click_link "Create wiki"
     expect(current_path).to eq("/wikis/new")
   end
 
   scenario "enter content to make a new wiki" do
-
     click_link "Create wiki"
     visit "/wikis/new"
     expect(current_path).to eq("/wikis/new")

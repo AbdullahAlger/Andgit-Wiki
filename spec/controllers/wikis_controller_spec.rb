@@ -62,8 +62,7 @@ RSpec.describe WikisController, :type => :controller do
       sign_in(user)
       params = {wiki: {title: "", body: "Angular testing causes brain malfunctions, brain malfunctions"}}
       post :create, params
-      wiki = Wiki.any?
-      expect(wiki).to eq false
+      expect(Wiki.any?).to eq false
       expect(response).to have_http_status(:ok)
       expect(flash[:error]).to eq "There was an error saving the wiki. Please try again."
     end
