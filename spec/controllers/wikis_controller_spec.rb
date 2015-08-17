@@ -78,15 +78,35 @@ RSpec.describe WikisController, :type => :controller do
       expect(flash[:error]).to eq "There was an error saving the wiki. Please try again."
     end
 
-    it "creates a private wiki when checkbox is checked" do
-      user = create(:user)
-      sign_in(user)
+    it "allows a premium user to create a private wiki" do
+      premium_user = create(:user, role: "premium")
+      sign_in(premium_user)
       params = {wiki: {title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions", private: "1"}}
       post :create, params
       expect(response).to have_http_status(:found)
       wiki = Wiki.find_by(title: "Angular is fun, except testing it", body: "Angular testing causes brain malfunctions, brain malfunctions")
       expect(flash[:notice]).to eq "Wiki was saved."
       expect(wiki.private).to eq true
+    end
+
+    it "prevents a standard user from creating a private wiki" do
+      standard_user = create(:user, role: "standard")
+      sign_in(standard_user)
+
+      params = {
+        wiki: {
+          title: "Angular is fun, except testing it",
+          body: "Angular testing causes brain malfunctions, brain malfunctions",
+          private: "1"
+        }
+      }
+      post :create, params
+
+      expect(flash[:notice]).to eq "Wiki was saved."
+      wiki = Wiki.find_by(title: "Angular is fun, except testing it")
+      expect(wiki).not_to be_nil
+      expect(response).to redirect_to(wiki_path(wiki))
+      expect(wiki.private?).to eq false
     end
   end
 
@@ -119,6 +139,21 @@ RSpec.describe WikisController, :type => :controller do
       expect(response).to have_http_status(:found)
       expect(wiki.private).to eq true
     end
+
+    it "prevents a standard user from privatizing a wiki" do
+      standard_user = create(:user, role: "standard")
+      sign_in(standard_user)
+      wiki = create(:wiki, user: standard_user, private: false)
+
+      params = {wiki: {private: "1", title: wiki.title, body: wiki.body}, id: wiki.slug}
+      patch :update, params
+
+      expect(wiki.reload.private?).to eq false
+      expect(flash[:notice]).to eq "Wiki has been updated."
+      expect(response).to redirect_to(wiki_path(wiki))
+      expect(response).to have_http_status(:found)
+    end
+
   end
 
   context "DELETE wiki" do
