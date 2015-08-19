@@ -4,9 +4,9 @@ feature '[[index user wikis]]' do
 
   before(:each) do
     user = create(:user)
+    @wiki = create(:wiki, user: user)
     login_as(user, scope: :user)
     visit "/wikis"
-    @wiki = create(:wiki, user: user)
   end
 
   scenario "click the 'My Wikis' link to show user's wikis" do
