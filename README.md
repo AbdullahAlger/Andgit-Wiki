@@ -1,4 +1,4 @@
-#Andgit 
+#Andgit Wikis
 ###__("Knowledge" in Old English)__
 
 This project is a wiki creator built with Ruby on Rails and the pages have been written using HAML. Testing of the application is done through RSpec and Capybara. Some of the gems that have been used in the project are the following: 
