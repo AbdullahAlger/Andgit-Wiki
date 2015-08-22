@@ -14,7 +14,7 @@ This project is a wiki creator built with Ruby on Rails and the pages have been 
 * Capybara
 * FactoryGirl
 
-**Bower files are:**
+**Bower**
 
 * Bootstrap-Sass
 * Angular (if you want to use it)
