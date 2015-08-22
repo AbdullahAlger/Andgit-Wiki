@@ -22,8 +22,12 @@ This project is a wiki creator built with Ruby on Rails and the pages have been 
 * jQuery
 
 ##Installation/Clone
-To clone the repository, please type in your console `git clone https://github.com/AbdullahAlger/blocipedia.git`
+To clone the repository, please type in your console 
+
+`git clone https://github.com/AbdullahAlger/blocipedia.git`
+
 The repository is forkable (yes, I made that up), and I encourage any amendments to the code to make it better if you'd like. Otherwise, it is what it is. 
+
 To install the required gems, type in your console `bundle install` and all the pretty gems will magically install.
 
 ##Frontend
